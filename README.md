@@ -2,7 +2,7 @@
 
 ## Installation Instructions
 
-- Fork this Repository
+- Fork this repository
 - Clone it locally
 - Run `ng serve --open` to launch server and open in browser
 
