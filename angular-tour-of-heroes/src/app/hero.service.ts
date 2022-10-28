@@ -9,17 +9,23 @@ import { Observable, of, forkJoin } from 'rxjs';
 export class HeroService {
 
   constructor(private http: HttpClient) { }
-  private heroes: Hero[] = [];
-  private heroesUrl = `https://app.sketchdeck.com/api/hero?id=`
+  private heroesUrl = `https://app.sketchdeck.com/api/hero?id=`;
+  private heroes: Hero[] = []
 
-  getHeroes(): Observable<Hero[]> {
+  getHeroes(): Hero[] {
     const heroIds = [12, 13, 14, 15, 16, 17, 18, 19, 20];
-
     const heroesFromAPI = heroIds.map((id) => this.getHero(id));
 
-    const heroes = forkJoin(heroesFromAPI)
-    console.log(heroes)
-    return heroes;
+    forkJoin(heroesFromAPI).subscribe((res) => {
+      let count = 0
+      res.forEach((hero) => {
+        hero.image = `../assets/hero${count}.jpg`
+        count++
+        this.heroes.push(hero)
+      })
+    })
+
+    return this.heroes;
   }
 
   getHero(id: number): Observable<Hero> {

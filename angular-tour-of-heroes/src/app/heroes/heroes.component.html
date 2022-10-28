@@ -1,7 +1,14 @@
-<h2>Heros</h2>
-
-<div *ngFor="let hero of heroes">
-  <div><span>id: </span>{{hero.id}}</div>
-  <div><span>name: </span>{{hero.name}}</div>
-  <div><span>age: </span>{{hero.age}}</div>
+<h2>Our Heroes</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let hero of heroes" class="col">
+        <div class="card">
+            <img src={{hero.image}} class="card-img-top" alt="hero"/>
+            <div class="card-body">
+                <h5 class="card-title">{{hero.name}}</h5>
+                <div class="card-text"><span>ID: </span>{{hero.id}}</div>
+                <div class="card-text"><span>Age: </span>{{hero.age}}</div>
+            </div>
+        </div>
+    </div> 
 </div>
+
