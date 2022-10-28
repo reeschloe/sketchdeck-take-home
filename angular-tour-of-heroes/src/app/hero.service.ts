@@ -16,9 +16,9 @@ export class HeroService {
     const heroIds = [12, 13, 14, 15, 16, 17, 18, 19, 20];
     const heroesFromAPI = heroIds.map((id) => this.getHero(id));
 
-    forkJoin(heroesFromAPI).subscribe((res) => {
+    forkJoin(heroesFromAPI).subscribe((result) => {
       let count = 0
-      res.forEach((hero) => {
+      result.forEach((hero) => {
         hero.image = `../assets/hero${count}.jpg`
         count++
         this.heroes.push(hero)
